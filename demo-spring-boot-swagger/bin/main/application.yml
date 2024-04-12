@@ -1,0 +1,6 @@
+springdoc:
+#  swagger-ui:
+#    path: /swagger-ui.html
+#  api-docs:
+#    path: /api-docs
+  packages-to-scan: com.fengwenyi.demo.springboot.swagger.controller

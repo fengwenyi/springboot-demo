@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.fengwenyi.demo.springboot.mybatis.mapper.IUserMapper" >
+    <resultMap id="BaseResultMap" type="com.fengwenyi.demo.springboot.mybatis.entity.UserEntity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+    </resultMap>
+
+    <select id="findById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+        SELECT
+            id, name, age
+        FROM
+            sys_user
+        WHERE
+            id = #{id, jdbcType=BIGINT}
+    </select>
+
+    <select id="queryAll" resultMap="BaseResultMap">
+        select * from sys_user
+    </select>
+
+</mapper>
