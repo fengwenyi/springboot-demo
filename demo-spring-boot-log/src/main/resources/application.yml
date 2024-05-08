@@ -1,0 +1,9 @@
+
+
+#logging:
+#  pattern:
+#    correlation: "[${spring.application.name:},%X{traceId:-},%X{spanId:-}] "
+#  include-application-name: false
+spring:
+  application:
+    name: demo-spring-boot-log

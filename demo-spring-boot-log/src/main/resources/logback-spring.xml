@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+
+    <springProperty scope="context" name="springAppName" source="spring.application.name"/>
+    <springProperty name="LOG_PATH" source="logging.path" defaultValue="data/log"/>
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss:SSS} %clr(${LOG_LEVEL_PATTERN:-%5p}) [%X{traceId:-},%X{spanId:-}] %clr(${PID:- }){magenta} %clr([%15.15t]){faint} %clr(%file:%line) : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+    <springProperty scope="context" name="FILE_PATTERN" source="log=back.pattern.file"
+                    defaultValue="%d{yyyy-MM-dd HH:mm:ss:SSS} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr([%15.15t]){faint} %clr(%file:%line) : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}"/>
+
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>INFO</level>
+        </filter>
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="flatfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--日志文件输出的文件名 -->
+            <fileNamePattern>${LOG_PATH}/${springAppName}-%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <!--日志文件保留天数 -->
+            <!--<maxHistory>30</maxHistory>-->
+            <!-- 日志文件大小  -->
+            <totalSizeCap>200MB</totalSizeCap>
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+            <pattern>${FILE_PATTERN}</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="console"/>
+        <appender-ref ref="flatfile"/>
+    </root>
+
+    <!--<include resource="org/springframework/boot/logging/logback/base.xml"/>-->
+    <!--&lt;!&ndash;显示日志&ndash;&gt;-->
+    <!--<logger name="org.springframework.jdbc.core" additivity="false" level="DEBUG" >-->
+    <!--<appender-ref ref="CONSOLE" />-->
+    <!--</logger>-->
+
+
+</configuration>
