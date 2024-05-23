@@ -11,7 +11,7 @@
         SELECT
             id, name, age
         FROM
-            sys_user
+            `sys_user`
         WHERE
             id = #{id, jdbcType=BIGINT}
     </select>
