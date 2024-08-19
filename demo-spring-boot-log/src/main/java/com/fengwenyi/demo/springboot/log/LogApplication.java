@@ -1,5 +1,6 @@
 package com.fengwenyi.demo.springboot.log;
 
+import com.mzt.logapi.starter.annotation.EnableLogRecord;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @SpringBootApplication
+@EnableLogRecord(tenant = "com.fengwenyi.demo.springboot")
 public class LogApplication {
 
     private static final Log log = LogFactory.getLog(LogApplication.class);

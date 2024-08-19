@@ -3,4 +3,9 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
 //    implementation 'io.micrometer:micrometer-tracing-bridge-otel'
     implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+    implementation 'io.github.mouzt:bizlog-sdk:3.0.7-SNAPSHOT'
+    implementation 'com.fengwenyi:JavaLib:+'
+    implementation 'com.fengwenyi:api-result:+'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 }
