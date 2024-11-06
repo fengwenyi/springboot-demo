@@ -1,4 +1,4 @@
-package com.fengwenyi.demo.springboot.validation;
+package com.fengwenyi.demo.springboot.validation.controller;
 
 /**
  * @author <a href="https://fengwenyi.com">Erwin Feng</a>

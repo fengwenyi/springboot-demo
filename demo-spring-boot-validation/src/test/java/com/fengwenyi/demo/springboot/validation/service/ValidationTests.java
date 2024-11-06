@@ -1,4 +1,4 @@
-package com.fengwenyi.demo.springboot.validation;
+package com.fengwenyi.demo.springboot.validation.service;
 
 import com.fengwenyi.demo.springboot.validation.model.UserModel;
 import jakarta.validation.ConstraintViolation;

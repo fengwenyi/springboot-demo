@@ -21,6 +21,7 @@
 
     <modules>
         <module>demo-spring-boot-jpa</module>
+        <module>demo-spring-boot-validation</module>
     </modules>
 
     <properties>
