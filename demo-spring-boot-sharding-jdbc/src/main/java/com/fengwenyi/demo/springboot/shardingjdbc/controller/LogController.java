@@ -2,14 +2,13 @@ package com.fengwenyi.demo.springboot.shardingjdbc.controller;
 
 import com.fengwenyi.demo.springboot.shardingjdbc.entity.LogEntity;
 import com.fengwenyi.demo.springboot.shardingjdbc.mapper.ILogMapper;
-import com.fengwenyi.javalib.convert.JsonUtils;
-import com.fengwenyi.javalib.generate.IdUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 /**
  * @author <a href="https://fengwenyi.com">Erwin Feng</a>
@@ -25,7 +24,7 @@ public class LogController {
     @GetMapping("/add")
     public String add() {
         LogEntity entity = new LogEntity();
-        entity.setMsg(IdUtils.generateId());
+        entity.setMsg(UUID.randomUUID().toString());
         entity.setCreateDateTime(LocalDateTime.now());
         logMapper.insert(entity);
         return "success";
@@ -33,7 +32,8 @@ public class LogController {
 
     @GetMapping("/get")
     public String get() {
-        return JsonUtils.string(logMapper.selectList(null));
+        logMapper.selectList(null);
+        return "success";
     }
 
 }

@@ -1,39 +1,9 @@
+server:
+  port: 9090
 spring:
-#  datasource:
-#    driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
-#    url: jdbc:shardingsphere:classpath:config.yaml
-  shardingsphere:
-    datasource:
-#      names: ds0
-      ds_0:
-#        type: com.alibaba.druid.pool.DruidDataSource
-#        type: org.apache.commons.dbcp2.BasicDataSource
-        type: com.zaxxer.hikari.HikariDataSource
-        driver-class-name: com.mysql.cj.jdbc.Driver
-        url: jdbc:mysql://base-dev.mcptool.huaxisy.com:9080/demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-        username: hxgy
-        password: hxeyP@ssw0rd2022
-    rules:
-      sharding:
-        tables:
-          t_log:  # 例如，按订单表分片
-            actualDataNodes: ds_0.t_log_${202411..202412}  # 2022年1月到2030年12月
-            tableStrategy:
-              standard:
-                shardingColumn: create_date_time
-                shardingAlgorithm:
-                  type: INLINE
-                  props:
-                    algorithm-expression: t_log_${create_date_time.substring(0, 7).replace('-', '')}  # YYYYMM格式
-#                    algorithm-expression: t_log_$->{create_date_time.toString().substring(0, 7).replace('-', '')}  # YYYYMM格式
-
-    props:
-      sql-show: true  # 控制台显示SQL
-
-  jackson:
-    date-format: yyyy-MM-dd HH:mm:ss
-    time-zone: GMT+8
-
+  datasource:
+    driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+    url: jdbc:shardingsphere:classpath:sharding.yml
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   global-config:
