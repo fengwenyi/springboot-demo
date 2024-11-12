@@ -22,6 +22,7 @@
     <modules>
         <module>demo-spring-boot-jpa</module>
         <module>demo-spring-boot-validation</module>
+        <module>demo-spring-boot-sharding-jdbc</module>
     </modules>
 
     <properties>
@@ -36,12 +37,13 @@
         <maven-javadoc-plugin.version>3.6.3</maven-javadoc-plugin.version>
         <maven-gpg-plugin.version>3.2.1</maven-gpg-plugin.version>
         <maven-source-plugin.version>3.3.0</maven-source-plugin.version>
-        <JavaLib.version>3.0.0-SNAPSHOT</JavaLib.version>
+        <JavaLib.version>3.0.1</JavaLib.version>
         <apache-commons-lang3.version>3.14.0</apache-commons-lang3.version>
         <apache-commons-rng.version>1.5</apache-commons-rng.version>
-        <mybatis-plus.version>3.5.7</mybatis-plus.version>
+        <mybatis-plus.version>3.5.9</mybatis-plus.version>
         <ip2region.version>2.7.0</ip2region.version>
         <api-result.version>2.7.4</api-result.version>
+        <mysql.version>8.0.33</mysql.version>
     </properties>
 
     <dependencies>

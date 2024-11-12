@@ -1,0 +1,20 @@
+dataSources:
+  demo:
+    dataSourceClassName: com.zaxxer.hikari.HikariDataSource
+    driverClassName: com.mysql.cj.jdbc.Driver
+    jdbcUrl: jdbc:mysql://base-dev.mcptool.huaxisy.com:9080/demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: hxgy
+    password: hxeyP@ssw0rd2022
+rules:
+- !SHARDING
+  tables:
+    t_log: # 例如，按订单表分片
+      actualDataNodes: demo.t_log_${202411..202412}  # 2022年1月到2030年12月
+      tableStrategy:
+        standard:
+          shardingColumn: create_date_time
+          shardingAlgorithm:
+            type: INLINE
+            props:
+              #                    algorithm-expression: t_log_${create_date_time.substring(0, 7).replace('-', '')}  # YYYYMM格式
+              algorithm-expression: t_log_$->{create_date_time.toString().substring(0, 7).replace('-', '')}  # YYYYMM格式
