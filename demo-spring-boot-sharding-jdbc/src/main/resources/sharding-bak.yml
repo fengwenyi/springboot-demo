@@ -6,9 +6,9 @@ dataSources:
   ds_0:
     dataSourceClassName: com.zaxxer.hikari.HikariDataSource
     driverClassName: com.mysql.cj.jdbc.Driver
-    jdbcUrl: jdbc:mysql://base-dev.mcptool.huaxisy.com:9080/demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false
-    username: hxgy
-    password: hxeyP@ssw0rd2022
+    jdbcUrl:
+    username:
+    password:
 rules:
 - !SHARDING
   tables:
