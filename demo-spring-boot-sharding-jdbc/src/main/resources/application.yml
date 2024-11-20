@@ -26,3 +26,29 @@ mybatis-plus:
     jdbc-type-for-null: 'null'
     ## 打印sql
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+erwin:
+  data-source:
+    ds_0:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url:
+      username:
+      password:
+  props:
+    sql-show: true
+  sharding:
+    t_log:
+      actual-data-nodes: "ds_0.t_log_${202411..202412}"
+      column: log_date_time
+      algorithm-name: sharding_by_time
+      algorithm:
+        sharding_by_time:
+          type: INTERVAL
+          props:
+            "datetime-pattern": "yyyy-MM-dd HH:mm:ss"
+            "datetime-lower": "2024-11-01 00:00:00"
+            "datetime-upper": "2024-12-31 23:59:59"
+            "sharding-suffix-pattern": "yyyyMM"
+            "datetime-interval-amount": "1"
+            "datetime-interval-unit": "MONTHS"
